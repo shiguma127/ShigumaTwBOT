@@ -1,0 +1,4 @@
+rootProject.name = 'ShigumaTwBot'
+include 'java'
+findProject(':java')?.name = 'ShigumaTwBot'
+
