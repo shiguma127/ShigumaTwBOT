@@ -133,6 +133,10 @@ public class StreamListener extends UserStreamAdapter {
             this.main.sendReply(status, "今日のラッキーアイテムは" + main.luckyItems.get(this.r.nextInt(main.luckyItems.size())) + "です。");
             return;
         }
+        if (status.getText().contains("今日のランチ") && !status.getSource().contains("ShigumaTwBOT")){
+            this.main.sendReply(status,"今日のランチは"+main.hirumesi.get(this.r.nextInt(main.hirumesi.size()))+"がよさそうです。");
+
+        }
         if (status.getText().contains("!アイテム総数")) {
             this.main.sendReply(status, "アイテム総数は" + main.luckyItems.size() + "個です。");
         }
@@ -149,6 +153,20 @@ public class StreamListener extends UserStreamAdapter {
             main.luckyItemWriter.println(item);
             main.luckyItems.add(item);
             this.main.sendReply(status, "登録が完了しました: " + item);
+        }
+        if (status.getText().startsWith("!hirumeshi")) {
+            String hirumeshi = arg[0].replace("!hirumeshi", "").trim();
+            if (hirumeshi.isEmpty()) {
+                this.main.sendReply(status, "!hirumeshiのあとにスペースなどを挿入しないでください");
+                return;
+            }
+            if (main.hirumesi.contains(hirumeshi)) {
+                this.main.sendReply(status, "すでに登録されています。");
+                return;
+            }
+            main.hirumeshiWriter.println(hirumeshi);
+            main.hirumesi.add(hirumeshi);
+            this.main.sendReply(status, "登録が完了しました: " + hirumeshi);
         }
 
 

@@ -12,6 +12,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,10 +44,12 @@ public class Main {
     public String user;
 
     public List<String> luckyItems;
+    public List<String> hirumesi;
     public List<String> loglist;
     public List<String> readedlog;
 
     public PrintWriter luckyItemWriter;
+    public PrintWriter hirumeshiWriter;
     public static PrintWriter logWriter;
 
     public String cpuName = "";
@@ -167,7 +170,16 @@ public class Main {
         }
         this.luckyItems = tmp;
 
+        List<String> hirumeshitmp = new ArrayList<>();
+        try{
+            hirumeshitmp = Files.readAllLines(Paths.get("hirumeshi.txt"),StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.hirumesi = hirumeshitmp;
+
         luckyItemWriter = getWriter("luckyItem.txt");
+        hirumeshiWriter = getWriter("hirumeshi.txt");
         List<String> blist = new ArrayList<>();
         try {
             blist = Files.readAllLines(Paths.get("botLog.txt"), StandardCharsets.UTF_8);

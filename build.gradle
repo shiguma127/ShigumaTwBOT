@@ -28,7 +28,7 @@ dependencies {
     compile "com.profesorfalken:jSensors:2.0.2"
     compile "com.google.code.gson:gson:2.8.2"
     compile "org.fusesource.jansi:jansi:1.17.1"
-    
+
 
 
 
