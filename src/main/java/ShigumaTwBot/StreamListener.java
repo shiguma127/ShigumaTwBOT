@@ -140,6 +140,9 @@ public class StreamListener extends UserStreamAdapter {
         if (status.getText().contains("!アイテム総数")) {
             this.main.sendReply(status, "アイテム総数は" + main.luckyItems.size() + "個です。");
         }
+        if (status.getText().contains("!俺らの昼飯")){
+            this.main.sendReply(status,"俺らの昼飯は全部で"+main.hirumesi.size()+"個だ！");
+        }
         if (status.getText().startsWith("#しぐまんアイテム")) {
             String item = arg[0].replace("#しぐまんアイテム", "").trim();
             if (item.isEmpty()) {
